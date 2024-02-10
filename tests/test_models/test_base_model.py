@@ -4,7 +4,7 @@
 """
 
 import unittest
-from models.base_model import BaseModels
+from models.base_model import BaseModel
 
 
 class TestBaseModel(unittest.TestCase):
@@ -16,8 +16,8 @@ class TestBaseModel(unittest.TestCase):
         my_model = BaseModel()
 
         self.assertIsNotNone(my_model.id)
-        self.assertIsNotNone(my.model.created_at)
-        self.assertIsNotNone(my.model.updated_at)
+        self.assertIsNotNone(my_model.created_at)
+        self.assertIsNotNone(my_model.updated_at)
 
     def test_save(self):
         """
@@ -40,20 +40,20 @@ class TestBaseModel(unittest.TestCase):
 
         my_model_dict = my_model.to_dict()
 
-        self.assertIsInstance(my_model, dict)
-        self.assertEqual(["__class__"], "BaseModel")
-        self.assertEqual(["id"], my_model.id)
-        self.assertEqual(["created_at"], my_model.created_at.isoformat())
-        self.assertEqual(["updated_at"], my_model.updated_at.isoformat())
+        self.assertIsInstance(my_model_dict, dict)
+        self.assertEqual(my_model_dict["__class__"], "BaseModel")
+        self.assertEqual(my_model_dict["id"], my_model.id)
+        self.assertEqual(my_model_dict["created_at"], my_model.created_at.isoformat())
+        self.assertEqual(my_model_dict["updated_at"], my_model.updated_at.isoformat())
 
     def test_str(self):
         """
-            Test _str_ if it's output a string and also check some values in the string
+            Test __str___ if it's output a string and also check some values in the string
         """
         my_model = BaseModel()
 
-        self.assertTrue(str(my_model).startwith('[BaseModel]'))
-        self.assertIn(mymodel.id, str(my_mode))
+        self.assertTrue(str(my_model).startswith('[BaseModel]'))
+        self.assertIn(my_model.id, str(my_model))
         self.assertIn(str(my_model.__dict__), str(my_model))
 
 
