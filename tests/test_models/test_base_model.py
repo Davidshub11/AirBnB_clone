@@ -33,8 +33,8 @@ class TestBaseModel(unittest.TestCase):
 
     def test_to_dict(self):
         """
-            Test to_dict if it is a dictionary and if the key are value are present
-            and correct
+            Test to_dict if it is a dictionary and if the key
+            are value are present and correct
         """
         my_model = BaseModel()
 
@@ -43,12 +43,15 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(my_model_dict, dict)
         self.assertEqual(my_model_dict["__class__"], "BaseModel")
         self.assertEqual(my_model_dict["id"], my_model.id)
-        self.assertEqual(my_model_dict["created_at"], my_model.created_at.isoformat())
-        self.assertEqual(my_model_dict["updated_at"], my_model.updated_at.isoformat())
+        self.assertEqual(my_model_dict["created_at"],
+                         my_model.created_at.isoformat())
+        self.assertEqual(my_model_dict["updated_at"],
+                         my_model.updated_at.isoformat())
 
     def test_str(self):
         """
-            Test __str___ if it's output a string and also check some values in the string
+            Test __str___ if it's output a string and also
+            check some values in the string
         """
         my_model = BaseModel()
 
