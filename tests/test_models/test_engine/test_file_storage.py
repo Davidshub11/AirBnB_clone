@@ -72,3 +72,22 @@ class TestFileStorage(unittest.Testcase):
         self.assertTrue(new_storage.all().get("BaseModel.{}".format(obj1.id)) is not None)
         self.assertTrue(new_storage.all().get("BaseModel.{}".format(obj2.id)) is not None)
 
+        def test_save_to_file(self):
+            # Test saving objects to a file and check if the file is created
+            obj = BaseModel()
+            models.storage.new(obj)
+            models.storage.save()
+            self.assertTrue(os.path.exists(models.storage._FileStorage__file_path))
+
+        def test_reload_empty_file(self):
+            # Test reloading when the file is empty or does not exists
+            with self.assertRaises(TypeError):
+            models.storage()
+            models.storage.reload()
+
+
+if __name__ == "__main__":
+unittest.main()
+
+
+
