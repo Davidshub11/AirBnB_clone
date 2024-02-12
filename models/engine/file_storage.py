@@ -28,7 +28,7 @@ class FileStorage:
                 obj : An instance object.
         """
         obj_cls_name = obj.__class__.__name__
-        key = "{}.{}".format(obj_class_name, obj.id)
+        key = "{}.{}".format(obj_cls_name, obj.id)
         value_dict = obj
         FileStorage.__objects[key] = value_dict
 
@@ -36,20 +36,20 @@ class FileStorage:
         """
         serializes __objects to the JSON file (path: __file_path)
         """
-        all_objs = Filestrorage.__objects
+        all_objs = FileStorage.__objects
         obj_dict = {}
 
         for key, val in all_objs.items():
             obj_dict[key] = val.to_dict()
 
-        with open(FileStrorage.__file_path, "w", encoding="utf-8") as fd:
+        with open(FileStorage.__file_path, "w", encoding="utf-8") as fd:
             json.dump(obj_dict, fd)
 
     def reload(self):
         """
         deserializes the JSON file to __objects
         """
-        if os.path.isFile(FileStorage.__file_path):
+        if os.path.isfile(FileStorage.__file_path):
             with open(FileStorage.__file_path, "r", encoding="utf-8") as fd:
                 try:
                     obj_dict = json.load(fd)
@@ -61,5 +61,5 @@ class FileStorage:
                         instance = cls(**value)
 
                         FileStrorage.__objects[key] = instance
-                except Exeception:
+                except Exception:
                     pass
