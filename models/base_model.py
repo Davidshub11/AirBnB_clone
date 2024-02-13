@@ -9,14 +9,39 @@ import models
 
 
 class BaseModel:
+    """
+    Custom base for all the classes in the AirBnb console project
+
+    Arttributes:
+        id(str): handles unique user identity
+        created_at: assigns current datetime
+        updated_at: updates current datetime
+
+    Methods:
+        __str__: prints the class name, id, and creates dictionary
+        representations of the input values
+        save(self): updates instance arttributes with current datetime
+        to_dict(self): returns the dictionary values of the instance obj
+
+    """
+
     def __init__(self, *args, **kwargs):
-        self.time_fmt = "%Y-%m-%dT%H:%M:%S.%f"
+        """
+        Public instance artributes initialization
+        after creation
+
+        Args:
+            *args(args): arguments
+            **kwargs(dict): attrubute values
+        """
+        DATE_TIME_FORMAT = '%Y-%m-%dT%H:%M:%S.%f'
         if kwargs:
             for key, value in kwargs.items():
                 if key == "__class__":
                     continue
                 elif key == "created_at" or key == "updated_at":
-                    setattr(self, key, datetime.strptime(value, self.time_fmt))
+                    setattr(self, key, datetime.strptime(value,
+                            DATE_TIME_FORMAT))
                 else:
                     setattr(self, key, value)
         else:
