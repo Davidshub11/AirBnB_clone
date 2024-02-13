@@ -24,6 +24,7 @@ class BaseModel:
         to_dict(self): returns the dictionary values of the instance obj
 
     """
+    date_time_format = '%Y-%m-%dT%H:%M:%S.%f'
 
     def __init__(self, *args, **kwargs):
         """
@@ -34,14 +35,14 @@ class BaseModel:
             *args(args): arguments
             **kwargs(dict): attrubute values
         """
-        DATE_TIME_FORMAT = '%Y-%m-%dT%H:%M:%S.%f'
+
         if kwargs:
             for key, value in kwargs.items():
                 if key == "__class__":
                     continue
                 elif key == "created_at" or key == "updated_at":
                     setattr(self, key, datetime.strptime(value,
-                            DATE_TIME_FORMAT))
+                            date_time_format))
                 else:
                     setattr(self, key, value)
         else:
