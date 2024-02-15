@@ -42,7 +42,7 @@ class FileStorage:
 
         with open(FileStorage.__file_path, mode='w', encoding="UTF8") as fd:
             json.dump(objects_dict, fd)
-
+"""
     def reload(self):
         """
         deserializes the JSON file to __objects, if the JSON
@@ -56,4 +56,16 @@ class FileStorage:
                     cls = value["__class__"]
                     self.new(eval(cls)(**value))
         except Exception:
+            pass
+        """
+
+    def reload(self):
+        """Deserialize/convert obj dicts back to instances, if it exists"""
+        try:
+            with open(self.__file_path, 'r', encoding="UTF-8") as f:
+                new_obj_dict = json.load(f)
+            for key, value in new_obj_dict.items():
+                obj = self.class_dict[value['__class__']](**value)
+                self.__objects[key] = obj
+        except FileNotFoundError:
             pass
