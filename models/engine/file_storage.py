@@ -27,10 +27,10 @@ class FileStorage:
         Arguments:
                 obj : An instance object.
         """
-        obj_cls_name = obj.__class__.__name__
-        key = "{}.{}".format(obj_cls_name, obj.id)
-        value_dict = obj
-        FileStorage.__objects[key] = value_dict
+        if obj:
+            key = '{}.{}'.format(obj.__class__.__name__, obj.id)
+            self.__objects[key] = obj
+
 
     def save(self):
         '''
