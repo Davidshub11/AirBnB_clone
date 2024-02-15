@@ -38,10 +38,9 @@ class TestBaseModel(unittest.TestCase):
             updated_at attribute.
         """
 
-        initial_updated_at = self.my_model.updated_at
-        current_updated_at = self.my_model.save()
-
-        self.assertNotEqual(initial_updated_at, current_updated_at)
+        old_update = self.my_model.updated_at
+        self.my_model.save()
+        self.assertNotEqual(self.my_model.updated_at, old_update)
 
     def test_to_dict(self):
         """
