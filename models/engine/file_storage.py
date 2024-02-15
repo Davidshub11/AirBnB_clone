@@ -53,6 +53,7 @@ class FileStorage:
                 with open(FileStorage.__file_path, 'r') as json_file:
                     data = json.load(json_file)
                     for key, value in data.items():
+                        cls_name, obj_id = key.split('.')
                         obj = BaseModel(value)
                         self.new(obj)
 
