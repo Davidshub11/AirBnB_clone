@@ -33,17 +33,15 @@ class FileStorage:
         FileStorage.__objects[key] = value_dict
 
     def save(self):
-        """
-        serializes __objects to the JSON file (path: __file_path)
-        """
-        all_objs = FileStorage.__objects
-        obj_dict = {}
+        '''
+            Serializes __objects attribute to JSON file.
+        '''
+        objects_dict = {}
+        for key, val in FileStorage.__objects.items():
+            objects_dict[key] = val.to_dict()
 
-        for key, val in all_objs.items():
-            obj_dict[key] = val.to_dict()
-
-        with open(FileStorage.__file_path, "w", encoding="utf-8") as fd:
-            json.dump(obj_dict, fd)
+        with open(FileStorage.__file_path, mode='w', encoding="UTF8") as fd:
+            json.dump(objects_dict, fd)
 
     def reload(self):
         """
