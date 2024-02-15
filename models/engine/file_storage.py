@@ -48,12 +48,11 @@ class FileStorage:
         file exists, otherwise nothing happens)
         """
         try:
-            if os.path.exists(FileStorage.__file_path):
-                with open(FileStorage.__file_path, 'r') as json_file:
-                    data = json.load(json_file)
-                    for key, value in data.items():
-                        obj = BaseModel(value)
-                        self.new(obj)
-
+            with open(self.__file_path, "r", encoding="utf-8") as f:
+                for o in json.load(f).values():
+                    name = o["__class__"]
+                    del o["__class__"]
+                    self.new(eval(name)(**o))
         except FileNotFoundError:
             pass
+
