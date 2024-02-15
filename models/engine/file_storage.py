@@ -47,14 +47,14 @@ class FileStorage:
         deserializes the JSON file to __objects, if the JSON
         file exists, otherwise nothing happens)
         """
+        from models.base_model import BaseModel
         try:
-            if os.path.exists(self.__file_path):
-                with open(self.__file_path, 'r') as json_file:
+            if os.path.exists(FileStorage.__file_path):
+                with open(FileStorage.__file_path, 'r') as json_file:
                     data = json.load(json_file)
                     for key, value in data.items():
-                        cls_name, obj_id = key.split('.')
-                        cls = globals()[cls_name]
-                        obj = cls(**value)
+                        obj = BaseModel(value)
                         self.new(obj)
+
         except FileNotFoundError:
             pass
