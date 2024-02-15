@@ -29,11 +29,11 @@ import cmd
 
 
 class HBNBCommand(cmd.Cmd):
-    '''
-    Contains the entry point of the command interpreter.
-    '''
+    """
+    Custom console class
+    """
 
-    prompt = ("(hbnb) ")
+    prompt = '(hbnb) '
 
     def do_quit(self, line):
         """
