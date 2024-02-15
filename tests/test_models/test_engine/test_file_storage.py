@@ -84,7 +84,7 @@ class TestFileStorage(unittest.TestCase):
     def test_reload_empty_file(self):
         # Test reloading when the file is empty or does not exist
         with self.assertRaises(TypeError):
-            models.storage.reload()
+            models.storage.reload(None)
 
 
 if __name__ == "__main__":
