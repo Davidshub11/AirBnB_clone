@@ -1,4 +1,4 @@
-#!usr/bin/python3
+#!/usr/bin/python3
 """This module defines the entry point of the command interpreter.
 
 It defines one class, `HBNBCommand()`, which sub-classes the `cmd.Cmd` class.
@@ -30,28 +30,20 @@ import cmd
 
 class HBNBCommand(cmd.Cmd):
     '''
-        Contains the entry point of the command interpreter.
+    Contains the entry point of the command interpreter.
     '''
 
     prompt = ("(hbnb) ")
 
     def do_quit(self, line):
-        """Handles the 'quit' command
-
-        Args:
-            line(args): input argument for quiting
-            the terminal
-
+        """
+        Quit command to exit the program
         """
         return True
 
     def do_EOF(self, line):
-        """Quits command interpreter with ctrl+d
-
-         Args:
-            line(args): input argument for quiting
-            the terminal
-
+        """
+        Quits command interpreter with ctrl+d
         """
         print()
         return True
