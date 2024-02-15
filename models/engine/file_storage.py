@@ -50,8 +50,9 @@ class FileStorage:
         """
         try:
             with open(self.__file_path, 'r') as f:
-                dict = json.loads(f.read())
-                for value in dict.values():
+                data = f.read()
+                obj_dict = json.loads(data)
+                for value in obj_dict.values():
                     cls = value["__class__"]
                     self.new(eval(cls)(**value))
         except Exception:
