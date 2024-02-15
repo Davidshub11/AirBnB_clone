@@ -1,23 +1,61 @@
 #!usr/bin/python3
+"""This module defines the entry point of the command interpreter.
 
+It defines one class, `HBNBCommand()`, which sub-classes the `cmd.Cmd` class.
+This module defines abstractions that allows us to manipulate a powerful
+storage system (FileStorage / DB). This abstraction will also allow us to
+change the type of storage easily without updating all of our codebase.
+
+It allows us to interactively and non-interactively:
+    - create a data model
+    - manage (create, update, destroy, etc) objects via a console / interpreter
+    - store and persist objects to a file (JSON file)
+
+Typical usage example:
+
+    $ ./console
+    (hbnb)
+
+    (hbnb) help
+    Documented commands (type help <topic>):
+    ========================================
+    EOF  create  help  quit
+
+    (hbnb)
+    (hbnb) quit
+    $
+"""
 import cmd
 
+
 class HBNBCommand(cmd.Cmd):
-    intro = "Welcome to my cmd, type 'help' for more commands. \n"
-    prompt = "(hbnb)"
+    '''
+        Contains the entry point of the command interpreter.
+    '''
 
-    def do_quit(self, arg):
-        """Quit command to exit the program"""
+    prompt = ("(hbnb) ")
+
+    def do_quit(self, line):
+        """Handles the 'quit' command
+
+        Args:
+            line(args): input argument for quiting
+            the terminal
+
+        """
         return True
 
-    def do_EOF(self, arg):
-        """EOF command to exit the program"""
-        print("")  # Print a new line for better formatting
-        return True
+    def do_EOF(self, line):
+        """Quits command interpreter with ctrl+d
 
-    def emptyline(self):
-        """Called when an empty line is entered"""
-        pass
+         Args:
+            line(args): input argument for quiting
+            the terminal
+
+        """
+        print()
+        return True
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
+
