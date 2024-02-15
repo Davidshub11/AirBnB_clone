@@ -22,7 +22,7 @@ class HBNBCommand(cmd.Cmd):
         """
         Quits command interpreter with ctrl+d
         """
-        print()
+        print("")
         return True
 
 
