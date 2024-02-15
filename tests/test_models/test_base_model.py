@@ -11,7 +11,7 @@ class TestBaseModel(unittest.TestCase):
     """
         Testing the base class model.
     """
-     def setUp(self):
+    def setUp(self):
         '''
             Initializing instance.
         '''
@@ -51,13 +51,13 @@ class TestBaseModel(unittest.TestCase):
 
         my_model_dict = self.my_model.to_dict()
 
-        self.assertIsInstance(self.my_model_dict, dict)
+        self.assertIsInstance(my_model_dict, dict)
         self.assertEqual(my_model_dict["__class__"], "BaseModel")
-        self.assertEqual(my_model_dict["id"], my_model.id)
+        self.assertEqual(my_model_dict["id"], self.my_model.id)
         self.assertEqual(my_model_dict["created_at"],
-                         my_model.created_at.isoformat())
+                         self.my_model.created_at.isoformat())
         self.assertEqual(my_model_dict["updated_at"],
-                         my_model.updated_at.isoformat())
+                         self.my_model.updated_at.isoformat())
 
     def test_str(self):
         """
@@ -69,6 +69,3 @@ class TestBaseModel(unittest.TestCase):
         self.assertIn(self.my_model.id, str(self.my_model))
         self.assertIn(str(self.my_model.__dict__), str(self.my_model))
 
-
-if __name__ == "__main__":
-    unittest.main()
