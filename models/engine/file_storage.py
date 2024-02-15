@@ -54,7 +54,9 @@ class FileStorage:
                     data = json.load(json_file)
                     for key, value in data.items():
                         cls_name, obj_id = key.split('.')
-                        obj = BaseModel(value)
+                        cls = globals()[cls_name]
+                        obj = cls(**value)
+                        # obj = BaseModel(value)
                         self.new(obj)
 
         except FileNotFoundError:
