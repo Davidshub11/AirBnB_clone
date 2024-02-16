@@ -27,39 +27,34 @@ class FileStorage:
         Arguments:
                 obj : An instance object.
         """
-        obj_cls_name = obj.__class__.__name__
-        key = "{}.{}".format(obj_cls_name, obj.id)
-        value_dict = obj
-        FileStorage.__objects[key] = value_dict
+        if obj:
+            key = '{}.{}'.format(obj.__class__.__name__, obj.id)
+            self.__objects[key] = obj
 
     def save(self):
-        """
-        serializes __objects to the JSON file (path: __file_path)
-        """
-        all_objs = FileStorage.__objects
+        '''
+            Serializes __objects attribute to JSON file.
+        '''
         obj_dict = {}
 
-        for key, val in all_objs.items():
-            obj_dict[key] = val.to_dict()
-
-        with open(FileStorage.__file_path, "w", encoding="utf-8") as fd:
-            json.dump(obj_dict, fd)
+        for key, obj in self.__objects.items():
+            obj_dict[key] = obj.to_dict()
+        with open(self.__file_path, 'w', encoding="UTF-8") as f:
+            json.dump(obj_dict, f)
 
     def reload(self):
         """
-        deserializes the JSON file to __objects
+        deserializes the JSON file to __objects, if the JSON
+        file exists, otherwise nothing happens)
         """
-        if os.path.isfile(FileStorage.__file_path):
-            with open(FileStorage.__file_path, "r", encoding="utf-8") as fd:
-                try:
-                    obj_dict = json.load(fd)
+        from models.base_model import BaseModel
+        try:
+            if os.path.exists(FileStorage.__file_path):
+                with open(FileStorage.__file_path, 'r') as json_file:
+                    data = json.load(json_file)
+                    for key, value in data.items():
+                        obj = BaseModel(value)
+                        self.new(obj)
 
-                    for key, value in obj_dict.items():
-                        class_name, obj_id = key.split('.')
-
-                        cls = eval(class_name)
-                        instance = cls(**value)
-
-                        FileStrorage.__objects[key] = instance
-                except Exception:
-                    pass
+        except FileNotFoundError:
+            pass

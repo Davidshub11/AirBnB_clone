@@ -1,23 +1,34 @@
-#!usr/bin/python3
-
+#!/usr/bin/python3
+'''
+    Implementing the console for the HBnB project.
+'''
 import cmd
 
-class HBNBCommand(cmd.Cmd):
-    intro = "Welcome to my cmd, type 'help' for more commands. \n"
-    prompt = "(hbnb)"
 
-    def do_quit(self, arg):
-        """Quit command to exit the program"""
+class HBNBCommand(cmd.Cmd):
+    """
+    Custom console class
+    """
+
+    prompt = '(hbnb) '
+
+    def do_quit(self, line):
+        """
+        Quit command to exit the program
+        """
         return True
 
-    def do_EOF(self, arg):
-        """EOF command to exit the program"""
-        print("")  # Print a new line for better formatting
+    def do_EOF(self, line):
+        """
+        Quits command interpreter with ctrl+d
+        """
+        print("")
         return True
 
     def emptyline(self):
-        """Called when an empty line is entered"""
+        """Do nothing on empty input"""
         pass
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
