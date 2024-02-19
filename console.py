@@ -150,9 +150,8 @@ class HBNBCommand(cmd.Cmd):
         try:
             setattr(obj, attribute_name, attribute_value)
             obj.save()
-            print("Instance updated successfully!")
         except Exception as e:
-            print("Error updating instance:", str(e))
+            pass
 
 
 if __name__ == "__main__":
