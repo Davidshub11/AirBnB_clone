@@ -6,7 +6,7 @@ import cmd
 import shlex
 from models.base_model import BaseModel
 from models import storage
-import ast
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
@@ -60,7 +60,7 @@ class HBNBCommand(cmd.Cmd):
         if len(commands) == 0:
             print("** class name missing **")
         elif commands[0] not in self.valid_classes:
-            print("** class doesen't exist **")
+            print("** class doesn't exist **")
         elif len(commands) < 2:
             print(" ** instance id missing ** ")
         else:
