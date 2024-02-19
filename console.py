@@ -6,6 +6,7 @@ import cmd
 import shlex
 from models.base_model import BaseModel
 from models import storage
+import ast
 
 
 class HBNBCommand(cmd.Cmd):
@@ -112,43 +113,46 @@ class HBNBCommand(cmd.Cmd):
                 if key.split('.')[0] == commands[0]:
                     print(str(value))
 
-        def do_update(self, arg):
-            """
-            update an instance by adding or update an attribute.
-            Usage: update <class_name> <id> <attribute_name>
-            "<attribute_value>"
-            """
-            commands = shlex.split(arg)
+    def do_update(self, arg):
+        """
+        Update an instance by adding or updating an attribute.
+        Usage: update <class_name> <id> <attribute_name> "<attribute_value>"
+        """
+        commands = shlex.split(arg)
 
-            if len(commands) == 0:
-                print("** class name missing **")
-            elif commands[0] not in self.valid_classes:
-                print(" ** class doesnt't exist **")
-            elif len(commands) < 2:
-                print("** instance id missing **")
-            else:
-                objects = storage.all()
+        if len(commands) == 0:
+            print("** class name missing **")
+            return
+        elif len(commands) < 2:
+            print("** instance id missing **")
+            return
+        elif len(commands) < 3:
+            print("** attribute name missing **")
+            return
+        elif len(commands) < 4:
+            print("** value missing **")
+            return
 
-                key = "{}.{}".format(commands[0], commands[1])
-                if key not in objects:
-                    print("** no instance found **")
-                elif len(commands) < 3:
-                    print("** attribute name missing **")
-                elif len(commands) < 4:
-                    print("** value missing **")
-                else:
-                    obj = objects[key]
+        class_name = commands[0]
+        instance_id = commands[1]
+        attribute_name = commands[2]
+        attribute_value = ' '.join(commands[3:])
 
-                    attr_name = commands[2]
-                    attr_value = commands[3]
+        objects = storage.all()
+        key = "{}.{}".format(class_name, instance_id)
 
-                    try:
-                        attr_value = eval(attr_value)
-                    except Exception:
-                        pass
-                    setattr(obj, attr_name, attr_value)
+        if key not in objects:
+            print("** no instance found **")
+            return
 
-                    obj.save()
+        obj = objects[key]
+
+        try:
+            setattr(obj, attribute_name, attribute_value)
+            obj.save()
+            print("Instance updated successfully!")
+        except Exception as e:
+            print("Error updating instance:", str(e))
 
 
 if __name__ == "__main__":
