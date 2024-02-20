@@ -1,0 +1,215 @@
+.places {
+    height: auto;
+    width: 1000px;
+    /* border: 1px solid black; */
+    position: relative;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.places h1 {
+    font-size: 30px;
+    width: 100%;
+    display:flex;
+    padding-left:10px;
+    margin:0px 0px;
+    /* border: 1px solid black; */
+    height:30px;
+}
+
+.places article {
+    width: 390px;
+    padding: 3px;
+    margin: 15px;
+    border: 1px solid #FF5A5F;
+    text-align: center;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+}
+
+article h2 {
+    font-size: 30px;
+    height:60px;
+    width:325px;
+    margin: 0px;
+    /* border: 1px solid yellow; */
+    padding: 0px 0px;
+} 
+
+article h3{
+    color:#FF5A5F;
+    font-weight: 50px;
+    font-size: 20px;
+    border: 2px solid #FF5A5F;
+    border-radius: 50%; 
+    width: 55px; 
+    height: auto;
+    line-height:55px; 
+    margin:0px;
+}
+
+article .price_by_night{
+    display: flex;
+    flex-direction: row;
+    /* border: 1px solid blue; */
+}
+
+article .information{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 70px;
+    border-top:1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+    margin-top: 6px;
+}
+.max_guest {
+    background-image: url("/images/icon_group.png");
+  }
+  .number_rooms {
+    background-image: url("/images/icon_bed.png");
+  }
+  .number_bathrooms {
+    background-image: url("/images/icon_bath.png");
+  }
+
+  div.max_guest,
+  div.number_rooms,
+  div.number_bathrooms {
+    line-height: 120px;
+    width: 100px;
+    height: auto;
+    display: inline-block;
+    background-position: 50% 5px;
+    background-repeat: no-repeat;
+   
+  } 
+
+article .user{
+    display: flex;
+    flex-direction:column;
+    height:inherit;
+    /* border: 1px solid blue; */
+    font-size: 10px;
+    line-height: 50%;
+    padding-left: 15px;
+  }
+  article .user p{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* padding-left: 10px; */
+  }
+
+  article .description{
+    display: flex;
+    flex-direction:column;
+    height:inherit;
+    font-size: 10px;
+    /* border: 1px solid blue; */
+    padding-left: 15px;
+    padding-bottom: 0px;
+  }
+  article .description p{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: left;
+    padding-bottom: 10px;
+  }
+
+  article .amenities{
+    /* border: 1px solid blue; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+    height: inherit;
+    padding-bottom: 0px;
+  }
+
+  article .amenities h1{
+    font-size: 15px;
+    padding: 0px;
+    /* border: 1px solid blue; */
+    margin: 0px;
+    height: inherit;
+  }
+
+  article .amenities ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 10px;
+    /* border: 1px solid blue; */
+    padding-left: 0px;
+  }
+
+  article .amenities ul li{
+    list-style: none;
+    display:flex;
+    align-items: center;
+    font-size: 10px;
+    line-height: 180%;
+  }
+
+  article .amenities h2 {
+    font-weight: 50px;
+    font-size: 15px;
+    /* border: 1px solid blue;  */
+    height: inherit;
+    margin-top: 10px;
+    /* border-bottom: 1px solid #DDDDDD; */
+  }
+
+  
+  .icon_tv{
+    background-image: url("/images/icon_tv.png");
+  }
+  .icon_wifi{
+    background-image: url("/images/icon_wifi.png");
+  }
+  .icon_pets{
+    background-image: url("/images/icon_pets.png");
+  }
+
+.icon_tv,
+.icon_wifi,
+.icon_pets {
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 15px 15px; /* Adjust the size of the background image */
+    padding-left: 25px; /* Add padding to create space for the image */
+}
+
+article .reviews  {
+  height: inherit;
+  font-size: 10px;
+  line-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+article .reviews h2{
+  height: inherit;
+  font-size: 10px;
+  line-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+article .reviews p{
+  height: inherit;
+  font-size: 10px;
+  line-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* border: 1px solid green; */
+  width: 370px;
+}
