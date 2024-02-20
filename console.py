@@ -159,6 +159,30 @@ class HBNBCommand(cmd.Cmd):
         except Exception as e:
             pass
 
+    def default(self, arg):
+        """
+        Default behavior for cmd module for invalid syntax
+        """
+        arg_list = arg.split('.')
+        incoming_class_name = arg_list[0]
+
+        command = arg_list[1].split('(')
+        incoming_method = command[0]
+
+        method_dict = {
+                'all': self.do_all,
+                'show': self.do_show,
+                'destroy': self.do_destroy,
+                'update': self.do_update,
+        }
+        if incoming_method in method_dict.keys():
+            return method_dict[incoming_method]("{} {}".format(
+                incoming_class_name, ""))
+
+        else:
+            print("** Unknown syntax: {}".format(arg))
+            return False
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
