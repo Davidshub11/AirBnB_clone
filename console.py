@@ -193,6 +193,8 @@ class HBNBCommand(cmd.Cmd):
         command = arg_list[1].split('(')
         incoming_method = command[0]
 
+        incoming_extra_arg = command[1].split(")")[0]
+
         method_dict = {
                 'all': self.do_all,
                 'show': self.do_show,
@@ -202,7 +204,7 @@ class HBNBCommand(cmd.Cmd):
         }
         if incoming_method in method_dict.keys():
             return method_dict[incoming_method]("{} {}".format(
-                incoming_class_name, ""))
+                incoming_class_name, incoming_extra_arg))
 
         else:
             print("** Unknown syntax: {}".format(arg))
