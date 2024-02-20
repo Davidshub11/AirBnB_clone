@@ -159,6 +159,29 @@ class HBNBCommand(cmd.Cmd):
         except Exception as e:
             pass
 
+    def do_count(self, arg):
+        """
+        Counts and retrieve the number of instances of a class
+        Usage: <class name>.count().
+        """
+        objects = storage.all()
+        command = shlex.split(arg)
+
+        incoming_class_name = command[0]
+
+        count = 0
+
+        if command:
+            if incoming_class_name in self.valid_classes:
+                for obj in objects.values():
+                    if obj.__class__.__name__ == incoming_class_name:
+                        count += 1
+                print(count)
+            else:
+                print("** invalid class name **")
+        else:
+            print("** class name missing **")
+
     def default(self, arg):
         """
         Default behavior for cmd module for invalid syntax
@@ -174,6 +197,7 @@ class HBNBCommand(cmd.Cmd):
                 'show': self.do_show,
                 'destroy': self.do_destroy,
                 'update': self.do_update,
+                'count': self.do_count
         }
         if incoming_method in method_dict.keys():
             return method_dict[incoming_method]("{} {}".format(
