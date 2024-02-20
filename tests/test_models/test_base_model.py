@@ -67,4 +67,3 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(str(self.my_model).startswith('[BaseModel]'))
         self.assertIn(self.my_model.id, str(self.my_model))
         self.assertIn(str(self.my_model.__dict__), str(self.my_model))
-
