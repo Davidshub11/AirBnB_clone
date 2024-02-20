@@ -167,7 +167,8 @@ class HBNBCommand(cmd.Cmd):
         objects = storage.all()
         command = shlex.split(arg)
 
-        incoming_class_name = command[0]
+        if arg:
+            incoming_class_name = command[0]
 
         count = 0
 
