@@ -146,12 +146,10 @@ class HBNBCommand(cmd.Cmd):
         instance_id = commands[1]
         attribute_name = commands[2]
         attribute_value = ' '.join(commands[3:])
-        print("cN= {}, I_ID = {}, att_Name = {}, att_value = {}".format(class_name, instance_id, attribute_name,  attribute_value))
 
         objects = storage.all()
         key = "{}.{}".format(class_name, instance_id)
 
-        print(objects)
         if key not in objects:
             print("** no instance found **")
             return
