@@ -126,8 +126,14 @@ class HBNBCommand(cmd.Cmd):
         Update an instance by adding or updating an attribute.
         Usage: update <class_name> <id> <attribute_name> "<attribute_value>"
         """
-        commands = shlex.split(arg)
-
+        print(arg)
+        commands = arg.split()
+        print("Commands:", commands)
+        if len(commands) < 4:
+            print("** Missing arguments **")
+            return
+        
+        
         if len(commands) == 0:
             print("** class name missing **")
             return
@@ -145,10 +151,12 @@ class HBNBCommand(cmd.Cmd):
         instance_id = commands[1]
         attribute_name = commands[2]
         attribute_value = ' '.join(commands[3:])
+        print("cN= {}, I_ID = {}, att_Name = {}, att_value = {}".format(class_name, instance_id, attribute_name,  attribute_value))
 
         objects = storage.all()
         key = "{}.{}".format(class_name, instance_id)
 
+        print(objects)
         if key not in objects:
             print("** no instance found **")
             return
@@ -221,6 +229,7 @@ class HBNBCommand(cmd.Cmd):
                 obj_id = all_args[0].strip()
                 attribute_name = all_args[1].strip()
                 attribute_value = ','.join(all_args[2:])
+                print(" This is ATT_value :", attribute_value)
 
                 return method_dict[incoming_method]("{} {} {}".format(
                         incoming_class_name, obj_id,
@@ -229,6 +238,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** Unknown syntax: {}".format(arg))
             return False
+
 
 
 if __name__ == "__main__":

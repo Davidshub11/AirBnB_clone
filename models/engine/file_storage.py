@@ -7,6 +7,11 @@ import json
 import os
 from models.base_model import BaseModel
 from models.user import User
+from models.state import State
+from models.city import City
+from models.review import Review
+from models.place import Place
+from models.amenity import Amenity
 
 
 class FileStorage:
@@ -48,14 +53,19 @@ class FileStorage:
         deserializes the JSON file to __objects, if the JSON
         file exists, otherwise nothing happens)
         """
+        classes = {
+                    'BaseModel': BaseModel, 'User': User, 'Place': Place,
+                    'State': State, 'City': City, 'Amenity': Amenity,
+                    'Review': Review
+                  }
 
         try:
             temp = {}
             with open(FileStorage.__file_path, 'r') as f:
                 temp = json.load(f)
                 for key, val in temp.items():
-                    obj = BaseModel(val)
-                    self.new(obj)
+                    self.all()[key] = classes[val['__class__']](**val)
+
         except FileNotFoundError:
             pass
         except json.decoder.JSONDecodeError:
