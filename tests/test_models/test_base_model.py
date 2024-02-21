@@ -41,6 +41,12 @@ class TestBaseModel(unittest.TestCase):
         old_update = self.my_model.updated_at
         self.my_model.save()
         self.assertNotEqual(self.my_model.updated_at, old_update)
+        i = self.value()
+        i.save()
+        key = self.name + "." + i.id
+        with open('file.json', 'r') as f:
+            j = json.load(f)
+            self.assertEqual(j[key], i.to_dict())
 
     def test_to_dict(self):
         """
