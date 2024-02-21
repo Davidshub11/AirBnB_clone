@@ -115,7 +115,7 @@ class HBNBCommand(cmd.Cmd):
             for key, value in objects.items():
                 print(str(value))
         elif commands[0] not in self.valid_classes:
-            print("** class doesen't exist **")
+            print("** class doesn't exist **")
         else:
             for key, value in objects.items():
                 if key.split('.')[0] == commands[0]:
