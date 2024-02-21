@@ -126,12 +126,7 @@ class HBNBCommand(cmd.Cmd):
         Update an instance by adding or updating an attribute.
         Usage: update <class_name> <id> <attribute_name> "<attribute_value>"
         """
-        print(arg)
         commands = arg.split()
-        print("Commands:", commands)
-        if len(commands) < 4:
-            print("** Missing arguments **")
-            return
         
         
         if len(commands) == 0:
