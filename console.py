@@ -67,10 +67,13 @@ class HBNBCommand(cmd.Cmd):
 
         if len(commands) == 0:
             print("** class name missing **")
+            return
         elif commands[0] not in self.valid_classes:
             print("** class doesn't exist **")
+            return
         elif len(commands) < 2:
             print("** instance id missing **")
+            return
         else:
             objects = storage.all()
 
@@ -143,26 +146,27 @@ class HBNBCommand(cmd.Cmd):
         elif len(commands) == 3:
             print("** value missing **")
             return
+        else:
 
-        class_name = commands[0]
-        instance_id = commands[1]
-        attribute_name = commands[2]
-        attribute_value = ' '.join(commands[3:])
+            class_name = commands[0]
+            instance_id = commands[1]
+            attribute_name = commands[2]
+            attribute_value = ' '.join(commands[3:])
 
-        objects = storage.all()
-        key = "{}.{}".format(class_name, instance_id)
+            objects = storage.all()
+            key = "{}.{}".format(class_name, instance_id)
 
-        if key not in objects:
-            print("** no instance found **")
-            return
+            if key not in objects:
+                print("** no instance found **")
+                return
 
-        obj = objects[key]
+            obj = objects[key]
 
-        try:
-            setattr(obj, attribute_name, attribute_value)
-            obj.save()
-        except Exception as e:
-            pass
+            try:
+                setattr(obj, attribute_name, attribute_value)
+                obj.save()
+            except Exception as e:
+                pass
 
     def do_count(self, arg):
         """
