@@ -4,6 +4,8 @@
 '''
 import cmd
 import shlex
+import re
+from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 from models import storage
 from models.user import User
@@ -129,13 +131,13 @@ class HBNBCommand(cmd.Cmd):
         if len(commands) == 0:
             print("** class name missing **")
             return
-        elif len(commands) < 2:
+        elif len(commands) == 1:
             print("** instance id missing **")
             return
-        elif len(commands) < 3:
+        elif len(commands) == 2:
             print("** attribute name missing **")
             return
-        elif len(commands) < 4:
+        elif len(commands) == 3:
             print("** value missing **")
             return
 
@@ -193,8 +195,9 @@ class HBNBCommand(cmd.Cmd):
         command = arg_list[1].split('(')
         incoming_method = command[0]
 
-        incoming_extra_arg = command[1].split(")")[0]
+        incoming_extra_arg = command[1].split(')')[0]
 
+        # Split the incoming_extra_arg by commas to get individual arguments
         all_args = incoming_extra_arg.split(',')
 
         method_dict = {
@@ -204,14 +207,21 @@ class HBNBCommand(cmd.Cmd):
                 'update': self.do_update,
                 'count': self.do_count
         }
+
         if incoming_method in method_dict.keys():
             if incoming_method != "update":
                 return method_dict[incoming_method]("{} {}".format(
                         incoming_class_name, incoming_extra_arg))
             else:
-                obj_id = all_args[0]
-                attribute_name = all_args[1]
-                attribute_value = all_args[2]
+                # For the "update" method, extract individual arguments
+                if len(all_args) < 3:
+                    print("** value missing **")
+                    return False
+
+                obj_id = all_args[0].strip()
+                attribute_name = all_args[1].strip()
+                attribute_value = ','.join(all_args[2:])
+
                 return method_dict[incoming_method]("{} {} {}".format(
                         incoming_class_name, obj_id,
                         attribute_name, attribute_value))
