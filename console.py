@@ -151,7 +151,7 @@ class HBNBCommand(cmd.Cmd):
         key = "{}.{}".format(class_name, instance_id)
 
         if key not in objects:
-            print("** no instance found **")
+            print("** class doesn't exist **")
             return
 
         obj = objects[key]
