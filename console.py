@@ -90,7 +90,7 @@ class HBNBCommand(cmd.Cmd):
         if len(commands) == 0:
             print("** class name missing **")
         elif commands[0] not in self.valid_classes:
-            print("** class doesen't exist **")
+            print("** class doesn't exist **")
         elif len(commands) < 2:
             print(" ** instance id missing ** ")
         else:
