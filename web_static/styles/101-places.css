@@ -46,7 +46,7 @@ article h3{
     font-size: 20px;
     border: 2px solid #FF5A5F;
     border-radius: 50%; 
-    width: 55px; 
+    width: 62px; 
     height: auto;
     line-height:55px; 
     margin:0px;
@@ -97,6 +97,7 @@ article .user{
     font-size: 10px;
     line-height: 50%;
     padding-left: 15px;
+    margin-top: 20px;
   }
   article .user p{
     display: flex;
@@ -113,6 +114,7 @@ article .user{
     /* border: 1px solid blue; */
     padding-left: 15px;
     padding-bottom: 0px;
+    margin-top: 10px;
   }
   article .description p{
     display: flex;
@@ -120,6 +122,7 @@ article .user{
     justify-content: flex-start;
     text-align: left;
     padding-bottom: 10px;
+    line-height: normal;
   }
 
   article .amenities{
@@ -194,7 +197,10 @@ article .reviews  {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  /* border: 1px solid green; */
+  width: 370px;
 }
+
 article .reviews h2{
   height: inherit;
   font-size: 10px;
@@ -212,4 +218,5 @@ article .reviews p{
   justify-content: flex-start;
   /* border: 1px solid green; */
   width: 370px;
+  margin-bottom: 5px;
 }

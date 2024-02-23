@@ -6,6 +6,8 @@ body {	font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-size: 14px;
 	color: #484848;
 }
-.container { max-width:1000px;
-	margin: 30px auto 30px auto;
+.container {max-width:auto;
+	display:flex;
+	flex-direction: column;
+	justify-content: space-evenly;
 }
