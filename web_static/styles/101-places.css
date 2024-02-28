@@ -1,6 +1,6 @@
 .places {
     height: auto;
-    width: 1000px;
+    width: 70vw;
     /* border: 1px solid black; */
     position: relative;
     margin: auto;
@@ -17,6 +17,13 @@
     margin:0px 0px;
     /* border: 1px solid black; */
     height:30px;
+}
+.place_items{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  /* border: 1px solid red; */
 }
 
 .places article {
@@ -125,7 +132,7 @@ article .user{
     line-height: normal;
   }
 
-  article .amenities{
+  article .amenitiess{
     /* border: 1px solid blue; */
     display: flex;
     flex-direction: column;
@@ -133,9 +140,10 @@ article .user{
     text-align: left;
     height: inherit;
     padding-bottom: 0px;
+    margin-left: 15px;
   }
 
-  article .amenities h1{
+  article .amenitiess h1{
     font-size: 15px;
     padding: 0px;
     /* border: 1px solid blue; */
@@ -143,7 +151,7 @@ article .user{
     height: inherit;
   }
 
-  article .amenities ul{
+  article .amenitiess ul{
     list-style-type: none;
     display: flex;
     flex-direction: column;
@@ -153,7 +161,7 @@ article .user{
     padding-left: 0px;
   }
 
-  article .amenities ul li{
+  article .amenitiess ul li{
     list-style: none;
     display:flex;
     align-items: center;
@@ -161,7 +169,7 @@ article .user{
     line-height: 180%;
   }
 
-  article .amenities h2 {
+  article .amenitiess h2 {
     font-weight: 50px;
     font-size: 15px;
     /* border: 1px solid blue;  */
@@ -220,3 +228,23 @@ article .reviews p{
   width: 370px;
   margin-bottom: 5px;
 }
+
+
+/* @media only screen and (max-width: 600px) {
+
+}
+@media only screen and (min-width: 600px) {
+
+}
+@media only screen and (min-width: 768px) {
+
+}
+Large devices (laptops/desktops, 992px and up)
+@media only screen and (max-width: 992px) {
+    .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height:auto;
+    }
+*/

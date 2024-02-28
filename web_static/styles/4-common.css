@@ -9,5 +9,4 @@ body {	font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
 .container {max-width:auto;
 	display:flex;
 	flex-direction: column;
-	justify-content: space-evenly;
 }

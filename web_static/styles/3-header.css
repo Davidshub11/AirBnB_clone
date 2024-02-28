@@ -1,9 +1,11 @@
-header {color:white;
+header {
 	height: 70px;
 	width: 100%;
 	border-bottom: 1px solid #CCCCCC;
     display: flex;
-    align-items: center;
+    align-items:center;
+    flex-direction: row;
+    padding:0 5vw 0 0;
 }
 header .logo{
 	width: 142px;
@@ -12,4 +14,6 @@ header .logo{
     background-repeat: no-repeat;
     background-position: center;
     padding-left: 20px;
+    margin-right: auto;
+    /* border: 1px solid blue; */
 }
